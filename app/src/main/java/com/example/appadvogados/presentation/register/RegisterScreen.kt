@@ -63,43 +63,49 @@ fun CustomRadio(text: String) {
     val onSelectionChange = { text: String ->
         selectedOption = text
     }
-    var teste: Color
+    val options = listOf(
+        "Advogado",
+        "Cliente"
+    )
 
-        Text(
-            text = text,
-            fontSize = 20.sp,
-            textAlign = TextAlign.Center,
-            modifier = Modifier
-                .clip(
-                    shape = RoundedCornerShape(
-                        size = 12.dp,
-                    ),
-                )
-                .border(
-                    if (text == selectedOption) {
-                        BorderStroke(2.dp, Purple40)
-                    } else {
-                        BorderStroke(2.dp, Color.Gray)
-                    },
-                    RoundedCornerShape(12.dp)
-                )
-                .clickable {
-                    onSelectionChange(text)
-                }
-                .background(
-                    if (text == selectedOption) {
-                        teste = Color.White
-                        Purple40
-                    } else {
-                        teste = Color.Gray
-                        Color.White
+    var teste: Color
+        options.forEach { text ->
+            Text(
+                text = text,
+                fontSize = 20.sp,
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+                    .clip(
+                        shape = RoundedCornerShape(
+                            size = 12.dp,
+                        ),
+                    )
+                    .border(
+                        if (text == selectedOption) {
+                            BorderStroke(2.dp, Purple40)
+                        } else {
+                            BorderStroke(2.dp, Color.Gray)
+                        },
+                        RoundedCornerShape(12.dp)
+                    )
+                    .clickable {
+                        onSelectionChange(text)
                     }
-                )
-                .padding(
-                    vertical = 12.dp,
-                    horizontal = 16.dp,
-                )
-                .fillMaxWidth(),
-            color = teste
-        )
+                    .background(
+                        if (text == selectedOption) {
+                            teste = Color.White
+                            Purple40
+                        } else {
+                            teste = Color.Gray
+                            Color.White
+                        }
+                    )
+                    .padding(
+                        vertical = 12.dp,
+                        horizontal = 16.dp,
+                    )
+                    .fillMaxWidth(),
+                color = teste
+            )
+        }
     }
